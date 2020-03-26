@@ -10,7 +10,6 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -21,38 +20,14 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class Candidate {
 
-	@EmbeddedId
-	private CandidateId id;
+    @EmbeddedId
+    private CandidateId id;
 
-	public CandidateId getId() {
-		return id;
-	}
+    @Column
+    @NotNull
+    private Integer status;
 
-	public void setId(CandidateId id) {
-		this.id = id;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	@Column
-	@NotNull
-	private Integer status;
-
-	@CreatedDate
-	private LocalDateTime createdAt;
+    @CreatedDate
+    private LocalDateTime createdAt;
 
 }

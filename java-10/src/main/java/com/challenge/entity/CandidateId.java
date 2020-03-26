@@ -17,18 +17,13 @@ import java.io.Serializable;
 @EntityListeners(AuditingEntityListener.class)
 public class CandidateId implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@ManyToOne
+    @ManyToOne
     private User user;
 
-	@ManyToOne
+    @ManyToOne
     private Acceleration acceleration;
 
-	@ManyToOne
-	private Company company;
+    @ManyToOne
+    private Company company;
 
 }

@@ -28,7 +28,21 @@ public class Acceleration {
     @Size(max = 100)
     private String name;
 
-    public Long getId() {
+    @Column
+    @NotNull
+    @Size(max = 50)
+    private String slug;
+
+    @ManyToOne
+    private Challenge challenge;
+
+    @OneToMany(mappedBy = "id.acceleration")
+    private List<Candidate> candidates;
+
+    @CreatedDate
+    private LocalDateTime createdAt;
+
+	public Long getId() {
 		return id;
 	}
 
@@ -52,30 +66,6 @@ public class Acceleration {
 		this.slug = slug;
 	}
 
-	public Challenge getChallenge() {
-		return challenge;
-	}
-
-	public void setChallenge(Challenge challenge) {
-		this.challenge = challenge;
-	}
-
-	public Company getCompany() {
-		return company;
-	}
-
-	public void setCompany(Company company) {
-		this.company = company;
-	}
-
-	public List<Candidate> getCandidates() {
-		return candidates;
-	}
-
-	public void setCandidates(List<Candidate> candidates) {
-		this.candidates = candidates;
-	}
-
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
@@ -83,22 +73,5 @@ public class Acceleration {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
-
-	@Column
-    @NotNull
-    @Size(max = 50)
-    private String slug;
-
-    @ManyToOne
-    private Challenge challenge;
-    
-    @ManyToOne
-    private Company company;
-
-    @OneToMany(mappedBy = "id.acceleration")
-    private List<Candidate> candidates;
-
-    @CreatedDate
-    private LocalDateTime createdAt;
 
 }

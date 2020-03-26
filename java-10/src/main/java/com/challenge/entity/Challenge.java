@@ -2,7 +2,6 @@ package com.challenge.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -18,7 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @EntityListeners(AuditingEntityListener.class)
-@EqualsAndHashCode(of = "id")
 public class Challenge {
 
     @Id
@@ -66,22 +64,6 @@ public class Challenge {
 
 	public void setSlug(String slug) {
 		this.slug = slug;
-	}
-
-	public List<Acceleration> getAccelerations() {
-		return accelerations;
-	}
-
-	public void setAccelerations(List<Acceleration> accelerations) {
-		this.accelerations = accelerations;
-	}
-
-	public List<Submission> getSubmissions() {
-		return submissions;
-	}
-
-	public void setSubmissions(List<Submission> submissions) {
-		this.submissions = submissions;
 	}
 
 	public LocalDateTime getCreatedAt() {

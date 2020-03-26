@@ -2,7 +2,6 @@ package com.challenge.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -18,7 +17,6 @@ import java.util.List;
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@EqualsAndHashCode(of = "id")
 public class Company {
 
     @Id
@@ -37,10 +35,7 @@ public class Company {
 
     @OneToMany(mappedBy = "id.company")
     private List<Candidate> candidates;
-    
-    @OneToMany(mappedBy = "company")
-    private List<Acceleration> accelerations;
-    
+
     @CreatedDate
     private LocalDateTime createdAt;
 
@@ -66,22 +61,6 @@ public class Company {
 
 	public void setSlug(String slug) {
 		this.slug = slug;
-	}
-
-	public List<Candidate> getCandidates() {
-		return candidates;
-	}
-
-	public void setCandidates(List<Candidate> candidates) {
-		this.candidates = candidates;
-	}
-
-	public List<Acceleration> getAccelerations() {
-		return accelerations;
-	}
-
-	public void setAccelerations(List<Acceleration> accelerations) {
-		this.accelerations = accelerations;
 	}
 
 	public LocalDateTime getCreatedAt() {

@@ -23,20 +23,4 @@ public class SubmissionId implements Serializable {
     @ManyToOne
     private User user;
 
-	public Challenge getChallenge() {
-		return challenge;
-	}
-
-	public void setChallenge(Challenge challenge) {
-		this.challenge = challenge;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 }
